@@ -4,11 +4,11 @@ const userController = require('../controllers/userController')
 
 const router = express.Router()
 
-router.get('/', function(req, res) {
+router.get('/user', function(req, res) {
     userController.getAll(req, res)
 })
 
-router.post('/', function(req, res) {
+router.post('/user', function(req, res) {
     userController.register(req, res)
 })
 

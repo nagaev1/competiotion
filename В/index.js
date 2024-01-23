@@ -3,6 +3,7 @@ const config = require('./config')
 const app = express()
 const db = require('./models')
 
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}));
 
@@ -15,11 +16,12 @@ function t0() {
 }
 // t0()
 
-
+const authHelper = require('./helpers/isAuth')
+app.use(authHelper)
 const basicRouter = require('./routes/basicRouter')
 app.use('/', basicRouter)
 const userRouter = require('./routes/userRouter')
-app.use('/user', userRouter)
+app.use('/', userRouter)
 
 
 

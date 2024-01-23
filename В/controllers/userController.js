@@ -32,19 +32,19 @@ exports.login = async (req, res) => {
 
     const user = await Users.findOne({ where: {login: req.body.login}})
     if (user.password == req.body.password){
-        const accesToken = jwt.sign(user.login, config.acces_token_secret)
+        const accesToken = jwt.sign({ login: user.login}, config.acces_token_secret, { expiresIn: "365d" })
         res.status(200).send({data: { accesToken }})
         
     } else {
         res.status(401).send({error: {code: 401, message: "Authentication failed"}})
     }
-    // res.status(200).send({data: {user_token: "none"}})
 }
 
-exports.isAuthorized
+exports.logout = async (req,res) => {
+    res.status(200).send({ data: { message: "logout"}})
+}
 
 exports.getAll = async (req, res) => {
     const users = await Users.findAll()
-    console.log(users)
     res.send({data: users})
 }
