@@ -13,13 +13,13 @@ function t0() {
         console.log(result)
     })
 }
-t0()
+// t0()
 
 
 const basicRouter = require('./routes/basicRouter')
 app.use('/', basicRouter)
 const userRouter = require('./routes/userRouter')
-app.use('/', userRouter)
+app.use('/user', userRouter)
 
 
 

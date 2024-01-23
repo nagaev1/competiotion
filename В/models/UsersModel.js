@@ -5,7 +5,6 @@ module.exports = function (sequelize) {
         user_id: {
             type: DataTypes.INTEGER(),
             primaryKey: true,
-            autoIncrement: true
         },
         name: {
             type: DataTypes.STRING(100),
