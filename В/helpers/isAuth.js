@@ -9,7 +9,7 @@ module.exports = async function (req, res, next) {
         if (!req.headers.authorization)
             throw new Error('there is no token')
         let token = req.headers.authorization.replace('Bearer ', '');
-        const {login} = await jwt.verify(token, config.acces_token_secret)
+        const {login} = await jwt.verify(token, config.access_token_secret)
         console.log(login)
         const user = await Users.findOne({ where: { login }})
         if (!user)

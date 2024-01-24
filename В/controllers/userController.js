@@ -32,7 +32,7 @@ exports.login = async (req, res) => {
 
     const user = await Users.findOne({ where: {login: req.body.login}})
     if (user.password == req.body.password){
-        const accesToken = jwt.sign({ login: user.login}, config.acces_token_secret, { expiresIn: "365d" })
+        const accesToken = jwt.sign({ login: user.login}, config.access_token_secret, { expiresIn: "365d" })
         res.status(200).send({data: { accesToken }})
         
     } else {
